@@ -45,6 +45,8 @@ interface QueryParams {
     minyear?: number;
     maxyear?: number;
     genre?: number[];
+    page?: number;
+    limit?: number;
 }
 
 export type { ContentBase, Movie, Serie, Season, Episode, Genre, QueryParams };

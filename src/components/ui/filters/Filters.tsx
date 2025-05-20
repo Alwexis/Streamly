@@ -123,9 +123,9 @@ export default function Filters({ genres, type }: FilterProps) {
         <section className="space-y-2">
           <h4 className={`text-neutral-300 text-sm ${geistSans.className}`}>Por año</h4>
           <div className="flex items-center justify-between gap-2 text-neutral-300">
-            <input className="w-24 bg-neutral-600 px-2.5 py-1 rounded-md outline-none" onChange={handleChange} name="minYear" value={formData.minYear} type="number" min={1980} max={2025} placeholder="1980" />
+            <input className="w-20 bg-neutral-600 px-2.5 py-1 rounded-md outline-none" onChange={handleChange} name="minYear" value={formData.minYear} type="number" min={1980} max={2025} placeholder="1980" />
             <span>-</span>
-            <input className="w-24 bg-neutral-600 px-2.5 py-1 rounded-md outline-none" onChange={handleChange} name="maxYear" value={formData.maxYear} type="number" min={1980} max={2025} placeholder="2025" />
+            <input className="w-20 bg-neutral-600 px-2.5 py-1 rounded-md outline-none" onChange={handleChange} name="maxYear" value={formData.maxYear} type="number" min={1980} max={2025} placeholder="2025" />
           </div>
         </section>
         <button type="submit"

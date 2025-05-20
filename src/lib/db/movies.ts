@@ -62,7 +62,9 @@ export async function getMoviesByQuery(query?: QueryParams): Promise<Movie[] | u
             title_filter: query.name,
             genres_filter: query.genre,
             min_year: query.minyear,
-            max_year: query.maxyear
+            max_year: query.maxyear,
+            limit_val: query.limit,
+            offset_val: (query.page || 1 - 1) * (query.limit || 30)
         })
     if (error) throw error
     return data;
