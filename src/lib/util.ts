@@ -20,6 +20,15 @@ export function parseQueryParamsToUrl(query: QueryParams): string {
     if (query.minyear) params += `minyear=${query.minyear}&`;
     if (query.maxyear) params += `maxyear=${query.maxyear}&`;
     if (query.genre && query.genre.length > 0) params += `genre=${query.genre.join(",")}&`;
-    if (params.endsWith("&")) params = params.slice(0, -1);
+    if (query.page && query.page > 1) params += `page=${query.page}&`;
+    if (params.endsWith("&") || params.endsWith("?")) params = params.slice(0, -1);
     return params;
+}
+
+export function getSlugsForPagination(base: string, query: QueryParams) {
+    const params = { ...query, page: query.page || 1 };
+    const nextPageSlug = `/${base}${parseQueryParamsToUrl({ ...params, page: params.page + 1 })}`
+    const rawPreviousPageSlug = `/${base}${parseQueryParamsToUrl({ ...params, page: params.page - 1 })}`
+    const previousPageSlug = `/${base}${parseQueryParamsToUrl(params)}` == rawPreviousPageSlug ? undefined : `${rawPreviousPageSlug}`
+    return { nextPageSlug, previousPageSlug };
 }
